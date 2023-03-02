@@ -2,10 +2,6 @@ package org.example;
 
 import org.example.system.controller.SystemController;
 import org.example.wiseSaying.controller.WiseSayingController;
-import org.example.wiseSaying.entity.WiseSaying;
-
-import java.awt.*;
-import java.util.*;
 
 public class App {
 
@@ -32,10 +28,9 @@ public class App {
             }
             else if(rq.getActionCode().equals("삭제")){
                 wiseSayingController.remove(rq);
-
             }
             else if(rq.getActionCode().equals("수정")){
-                wiseSayingController.modify(rq);
+                wiseSayingController.update(rq);
             }
 
         }

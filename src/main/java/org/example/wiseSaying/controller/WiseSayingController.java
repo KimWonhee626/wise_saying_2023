@@ -6,7 +6,6 @@ import org.example.wiseSaying.entity.WiseSaying;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class WiseSayingController {
 
@@ -49,21 +48,26 @@ public class WiseSayingController {
             System.out.println(id+"번 명언은 존재하지 않습니다.");
         }
 
+        WiseSaying wiseSaying = findById(id);
+        wiseSayings.remove(wiseSaying);
+
         System.out.println(id+"번 명언이 삭제되었습니다.");
     }
 
     // ** 수정 **
-    public void modify (Rq rq){
+    public void update(Rq rq){
         int id = rq.getIntParam("id", -1);
         int idx = id - 1;
         if(id == -1){
             System.out.println(id+"번 명언은 존재하지 않습니다.");
         }
 
-        System.out.println("명언(기존) : "+wiseSayings.get(idx).getText());
+        WiseSaying wiseSaying = findById(id);
+
+        System.out.println("명언(기존) : "+wiseSaying.getText());
         System.out.print("명언 : ");
         String text = Container.getScanner().nextLine();
-        System.out.println("작가(기존) : "+wiseSayings.get(idx).getAuthor());
+        System.out.println("작가(기존) : "+wiseSaying.getAuthor());
         System.out.print("작가 : ");
         String author = Container.getScanner().nextLine();
 
@@ -72,5 +76,15 @@ public class WiseSayingController {
         if(id == -1){
             System.out.println(id+"번 명언은 존재하지 않습니다.");
         }
+    }
+
+    // ** id로 객체 검색 **
+    private WiseSaying findById(int id) {
+        for (WiseSaying wiseSaying : wiseSayings) {
+            if (wiseSaying.getId() == id) {
+                return wiseSaying;
+            }
+        }
+        return null;
     }
 }
