@@ -1,19 +1,19 @@
-package org.example;
+package org.example.wiseSaying.entity;
 
 public class WiseSaying {
-    int id;
-    String text;
-    String author;
+    private int id;
+    private String text;
+    private String author;
 
     WiseSaying(){}
 
-    WiseSaying(int id, String text, String author){
+    public WiseSaying(int id, String text, String author){
         this.id = id;
         this.text = text;
         this.author = author;
     }
 
-    void print(){
+    public void print(){
         System.out.println(id+" / "+author+" / "+text);
     }
 

@@ -1,50 +1,44 @@
 package org.example;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import org.example.system.controller.SystemController;
+import org.example.wiseSaying.controller.WiseSayingController;
+import org.example.wiseSaying.entity.WiseSaying;
+
+import java.awt.*;
+import java.util.*;
 
 public class App {
-    private final Scanner sc;
-
-    public App(Scanner sc){
-        this.sc = sc;
-    }
 
     public void run(){
         System.out.println("== 명언 앱 ==");
 
-        int num = 1;
-        List<WiseSaying> list = new LinkedList<>();
+        SystemController systemController = new SystemController();
+        WiseSayingController wiseSayingController = new WiseSayingController();
 
         while(true){
             System.out.print("명령) ");
-            String cmd = sc.nextLine().trim(); // 좌우 공백 제거
+            String cmd = Container.getScanner().nextLine().trim(); // 좌우 공백 제거
+            Rq rq = new Rq(cmd);
 
-            if(cmd.equals("종료")){
+            if(rq.getActionCode().equals("종료")){
+                systemController.exit();
                 break;
             }
-            else if(cmd.equals("등록")){
-                System.out.print("명언 : ");
-                String text = sc.nextLine();
-                System.out.print("작가 : ");
-                String author = sc.nextLine();
-
-                list.add(new WiseSaying(num, text, author));
-                System.out.println(num+"번 명언이 등록되었습니다.");
-                num++;
+            else if(rq.getActionCode().equals("등록")){
+                wiseSayingController.write();
             }
-            else if(cmd.equals("목록")){
-                System.out.println("번호 / 작가 / 명언");
-                System.out.println("----------------------");
-                for(int i = list.size()-1; i>=0; i--){
-                    list.get(i).print();
-                }
+            else if(rq.getActionCode().equals("목록")){
+                wiseSayingController.list();
             }
+            else if(rq.getActionCode().equals("삭제")){
+                wiseSayingController.remove(rq);
 
+            }
+            else if(rq.getActionCode().equals("수정")){
+                wiseSayingController.modify(rq);
+            }
 
         }
 
-        sc.close();
     }
 }
