@@ -1,0 +1,29 @@
+[33mcommit 4f795852534f719ce5e390137bd2c9030f92f050[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: KimWonhee626 <kwh7739@gmail.com>
+Date:   Fri Mar 3 10:11:48 2023 +0900
+
+    서비스 도입
+
+[33mcommit 8be3a4fce25127513bc4f61e0f5cf0c4309324cd[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: KimWonhee626 <kwh7739@gmail.com>
+Date:   Thu Mar 2 14:54:46 2023 +0900
+
+    삭제, 수정 ê기능 추가
+
+[33mcommit 788ada110e48d10fcd13e5824abd363f333dbf68[m
+Author: KimWonhee626 <kwh7739@gmail.com>
+Date:   Thu Mar 2 14:40:34 2023 +0900
+
+    모듈화, Rq도입, Container도입하여 구조 개선
+
+[33mcommit 719edc159f956d3b345102a119a9e21ddecf450e[m
+Author: KimWonhee626 <kwh7739@gmail.com>
+Date:   Thu Mar 2 11:06:00 2023 +0900
+
+    (1~5단계) WiseSaying 객체를 리스트에 저장 후 목록 출력하는 메서드 생성
+
+[33mcommit 64c6fd57cee0dd4db2f8922e8fa03845897b4e7c[m
+Author: KimWonhee626 <kwh7739@gmail.com>
+Date:   Thu Mar 2 09:36:02 2023 +0900
+
+    First commit
