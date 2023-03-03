@@ -28,4 +28,12 @@ public class WiseSaying {
     public String getAuthor() {
         return author;
     }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 }
