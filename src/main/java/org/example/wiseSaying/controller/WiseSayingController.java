@@ -5,7 +5,6 @@ import org.example.Rq;
 import org.example.wiseSaying.entity.WiseSaying;
 import org.example.wiseSaying.service.WiseSayingService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class WiseSayingController {
@@ -17,13 +16,13 @@ public class WiseSayingController {
     }
 
     // ** 등록 **
-    public void write() {
+    public void save() {
         System.out.print("명언 : ");
         String text = Container.getScanner().nextLine();
         System.out.print("작가 : ");
         String author = Container.getScanner().nextLine();
 
-        int id = wiseSayingService.write(text, author);
+        long id = wiseSayingService.save(text, author);
 
         System.out.println(id + "번 명언이 등록되었습니다.");
     }
@@ -43,7 +42,7 @@ public class WiseSayingController {
 
     // ** 삭제 **
     public void remove(Rq rq) {
-        int id = rq.getIntParam("id", -1);
+        long id = rq.getLongParam("id", -1);
 
         // 입력된 id와 일치하는 WiseSaying객체 찾기
         WiseSaying wiseSaying = wiseSayingService.findById(id);
@@ -61,7 +60,7 @@ public class WiseSayingController {
 
     // ** 수정 **
     public void update(Rq rq) {
-        int id = rq.getIntParam("id", -1);
+        long id = rq.getLongParam("id", -1);
 
         // 입력된 id와 일치하는 WiseSaying객체 찾기
         WiseSaying wiseSaying = wiseSayingService.findById(id);

@@ -1,53 +1,47 @@
 package org.example.wiseSaying.repository;
 
 import org.example.wiseSaying.entity.WiseSaying;
+import org.example.wiseSaying.table.WiseSayingTable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class WiseSayingRepository {
 
-    private int num;
-    private final List<WiseSaying> wiseSayings;
+    private WiseSayingTable wiseSayingTable;
+
 
     public WiseSayingRepository(){
-        num = 0;
-        wiseSayings = new ArrayList<>();
+        wiseSayingTable = new WiseSayingTable();
     }
 
     // ** id로 객체 검색 **
-    public WiseSaying findById(int id) {
-        for (WiseSaying wiseSaying : wiseSayings) {
-            if (wiseSaying.getId() == id) {
-                return wiseSaying;
-            }
-        }
-        return null;
+    public WiseSaying findById(long id) {
+        return wiseSayingTable.findById(id);
     }
 
     // ** 등록 **
-    public int write(String text, String author){
-        int id = ++num;
+    public long save(String text, String author){
+        long id = wiseSayingTable.getLastId() + 1;
 
         WiseSaying wiseSaying = new WiseSaying(id, text, author);
-        wiseSayings.add(wiseSaying);
 
-        return id;
+        return wiseSayingTable.save(wiseSaying);
     }
 
     // ** 목록 **
     public List<WiseSaying> findAll() {
-        return wiseSayings;
+
+        return wiseSayingTable.findAll();
     }
 
     // ** 삭제 **
     public void remove(WiseSaying wiseSaying){
-        wiseSayings.remove(wiseSaying);
+        wiseSayingTable.remove(wiseSaying);
     }
 
     // ** 수정 **
     public void update(WiseSaying wiseSaying, String text, String author){
-        wiseSaying.setText(text);
-        wiseSaying.setAuthor(author);
+        wiseSayingTable.update(wiseSaying, text, author);
     }
 }

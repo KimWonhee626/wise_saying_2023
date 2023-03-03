@@ -21,7 +21,7 @@ public class App {
                 break;
             }
             else if(rq.getActionCode().equals("등록")){
-                wiseSayingController.write();
+                wiseSayingController.save();
             }
             else if(rq.getActionCode().equals("목록")){
                 wiseSayingController.list();
